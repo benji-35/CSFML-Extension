@@ -47,6 +47,7 @@ $(NAME):	$(OBJ)
 	rm -f $(OBJ)
 	cp $(NAME) $(PATH_LIB)
 	cp $(HEADER) $(PATH_HEADER)
+	rm -f $(NAME)
 
 fclean:
 	rm -f $(PATH_HEADER)$(HEADER)
