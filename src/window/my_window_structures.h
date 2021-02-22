@@ -16,7 +16,7 @@ typedef struct window_s {
     sfVideoMode *video_mode;
     sfEvent *evt;
     list *list;
-    int windowed;
+    int *windowed;
     void (*event_listener) (sfEvent event, list **l);
     void (*clock_listener) (list *l);
     void (*play_window) (list **l, char *win_name);

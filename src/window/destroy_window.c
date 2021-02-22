@@ -12,6 +12,7 @@ void destroy_window(window_t *window)
 {
     free(window->evt);
     free(window->video_mode);
+    free(window->windowed);
     sfRenderWindow_destroy(window->win);
     free(window);
 }

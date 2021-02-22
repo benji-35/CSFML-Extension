@@ -15,9 +15,9 @@ HEADER_STRUCTURE = physics_structre.h
 
 NAME = libmy_physics.a
 
-PATH_LIB = ../../libs/
-
 PATH_HEADER = ../../includes/
+
+PATH_LIBS = ../../includes/
 
 all:	$(NAME)
 
@@ -26,12 +26,12 @@ $(NAME):	$(OBJ)
 	rm -f $(OBJ)
 	cp $(HEADER) $(PATH_HEADER)$(HEADER)
 	cp $(HEADER_STRUCTURE) $(PATH_HEADER)$(HEADER_STRUCTURE)
-	cp $(NAME) $(PATH_LIB)$(NAME)
+	cp $(NAME) $(PATH_LIBS)$(NAME)
 
 fclean:
-	rm -f $(NAME)
-	rm -f $(PATH_LIB)$(NAME)
 	rm -f $(PATH_HEADER)$(HEADER)
 	rm -f $(PATH_HEADER)$(HEADER_STRUCTURE)
+	rm -f $(PATH_LIBS)$(NAME)
+	rm -f $(NAME)
 
 re:	fclean all

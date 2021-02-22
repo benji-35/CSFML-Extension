@@ -14,7 +14,7 @@ void click_button(button *btn, sfVector2f *pos_mouse, list *l)
 {
     if (btn == NULL)
         return;
-    if (btn->is_over == 0)
+    if (*btn->is_over == 0)
         return;
     sfSprite_setColor(btn->sprite, *btn->click_color);
     (btn->on_click)(btn, l);

@@ -19,7 +19,7 @@ void move_x_background(background *bg, float time, list *l)
     float size = bg->rect->width / 2.0f;
     sfVector2f pos = sfSprite_getPosition(bg->sprite);
     sfVector2f scale = sfSprite_getScale(bg->sprite);
-    bg->pos->x = bg->speed * time;
+    bg->pos->x = *bg->speed * time;
     if (pos.x < size * -1.0f * scale.x) {
         pos.x = 0.0f;
         sfSprite_setPosition(bg->sprite, pos);

@@ -25,7 +25,7 @@ void clock_anim(animation *anim, sfClock *clock_anim_player)
 {
     sfTime time = sfClock_getElapsedTime(clock_anim_player);
     int nb_anims = anim->current->y;
-    float steps = anim->time_anim / (float)nb_anims;
+    float steps = *anim->time_anim / (float)nb_anims;
     float try = 0.0f;
     if (sfTime_asSeconds(time) < steps)
         return;

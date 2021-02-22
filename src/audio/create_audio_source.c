@@ -15,7 +15,7 @@ audio_clip *create_audio_clip(char *path_audio)
 {
     audio_clip *new_clip = malloc(sizeof(audio_clip));
     sfSoundBuffer *buffer = sfSoundBuffer_createFromFile(path_audio);
-    float volume = 1.0f;
+    float *volume = malloc(sizeof(float));
 
     new_clip->volume = volume;
     new_clip->buffer = buffer;
@@ -27,14 +27,18 @@ audio_source *create_audio_source(audio_clip *clip)
 {
     audio_source *new_audio_source = malloc(sizeof(audio_source));
     sfSound *sound = sfSound_create();
-    float volume = 1.0f;
-    float time = sfTime_asSeconds(sfSoundBuffer_getDuration(clip->buffer));
-    int loop = 0;
-    float max_time = time;
+    float *volume = malloc(sizeof(float));
+    float *time = malloc(sizeof(time));
+    int *loop = malloc(sizeof(int));
+    float *max_time = malloc(sizeof(float));
 
+    *loop = 0;
+    *volume = 1.0f;
+    *time = sfTime_asSeconds(sfSoundBuffer_getDuration(clip->buffer));
+    *max_time = *time;
     sfSound_setBuffer(sound, clip->buffer);
-    sfSound_setVolume(sound, volume);
-    sfSound_setLoop(sound, loop);
+    sfSound_setVolume(sound, *volume);
+    sfSound_setLoop(sound, *loop);
     new_audio_source->clip = clip;
     new_audio_source->sound = sound;
     new_audio_source->time = time;

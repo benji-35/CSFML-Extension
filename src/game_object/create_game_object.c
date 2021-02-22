@@ -12,8 +12,12 @@ animation *create_animation(sfIntRect rect);
 
 void init_game_object(game_object *obj)
 {
-    obj->collidable = 1;
-    obj->is_jumping = 0;
+    int *collidable = malloc(sizeof(int));
+    int *is_jumping = malloc(sizeof(int));
+    *collidable = 1;
+    *is_jumping = 0;
+    obj->collidable = collidable;
+    obj->is_jumping = is_jumping;
     obj->displayable = 1;
 }
 
@@ -25,12 +29,14 @@ game_object *create_game_object(char *path, sfIntRect rect, float x, float y)
     animation *anim = create_animation(rect);
     sfTexture *texture = sfTexture_createFromFile(path, NULL);
     sfSprite *sprite = sfSprite_create();
+    int *gravity = malloc(sizeof(int));
     init_game_object(new_object);
     sfSprite_setTexture(sprite, texture, sfFalse);
     sfSprite_setTextureRect(sprite, *anim->rect);
     sfSprite_setPosition(sprite, (sfVector2f){x, y});
     *velocity = (sfVector2f) {0.0f, 0.0f};
-    new_object->gravity = 1;
+    *gravity = 1;
+    new_object->gravity = gravity;
     new_object->corners = corners;
     new_object->path = path;
     new_object->sprite = sprite;

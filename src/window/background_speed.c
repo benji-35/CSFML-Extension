@@ -9,12 +9,12 @@
 
 void set_background_speed(background *bg, float speed)
 {
-    bg->speed = speed;
+    *bg->speed = speed;
 }
 
 void set_parralax_background(background *bg, int parralax)
 {
-    bg->parralax = parralax;
+    *bg->parralax = parralax;
     sfTexture_setRepeated(bg->texture, parralax);
 }
 

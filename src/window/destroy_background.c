@@ -12,7 +12,9 @@ void destroy_background(background *bg)
 {
     if (bg == NULL)
         return;
+    free(bg->parralax);
     free(bg->rect);
+    free(bg->speed);
     sfSprite_destroy(bg->sprite);
     sfTexture_destroy(bg->texture);
     free(bg->pos);

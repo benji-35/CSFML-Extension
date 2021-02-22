@@ -16,6 +16,5 @@ int nb_line(char *str);
 int nb_char_line(char *str);
 char *int_to_char(int nb);
 char *add_in_str(char *str1, char *str2);
-char *copy_str(char *str);
 
 #endif /* !MY_H_ */

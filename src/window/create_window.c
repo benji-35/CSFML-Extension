@@ -14,6 +14,8 @@ window_t *create_window(int width, int height, char *title, list *list)
     sfRenderWindow *win;
     sfEvent *event = malloc(sizeof(sfEvent));
     sfVideoMode *mode = malloc(sizeof(sfVideoMode));
+    int *windowed = malloc(sizeof(int));
+    *windowed = 1;
     mode->height = height;
     mode->bitsPerPixel = 32;
     mode->width = width;
@@ -23,7 +25,7 @@ window_t *create_window(int width, int height, char *title, list *list)
     new_window->list = list;
     new_window->video_mode = mode;
     new_window->win = win;
-    new_window->windowed = 1;
+    new_window->windowed = windowed;
     sfRenderWindow_clear(win, sfBlack);
     sfRenderWindow_display(win);
     return (new_window);

@@ -24,8 +24,8 @@ struct button_s {
     sfColor *normal_color;
     sfColor *over_color;
     sfColor *click_color;
-    int is_over;
-    int interractable;
+    int *is_over;
+    int *interractable;
     void (*on_over)(button *btn, list *l);
     void (*on_click)(button *btn, list *l);
     void (*on_unover)(button *btn, list *l);

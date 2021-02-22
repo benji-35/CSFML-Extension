@@ -20,20 +20,24 @@ void init_background_pos(background *bg)
 background *create_background(char *path , int parralax, sfIntRect rect)
 {
     background *new_back = malloc(sizeof(background));
+    int *new_parralax = malloc(sizeof(int));
+    float *speed = malloc(sizeof(float));
     sfIntRect *new_rect = malloc(sizeof(sfIntRect));
     *new_rect = rect;
     new_rect->width = new_rect->width * 2;
     sfTexture *texture = sfTexture_createFromFile(path, new_rect);
     sfSprite *sprite = sfSprite_create();
 
+    *speed = 0.0f;
+    *new_parralax = parralax;
     sfTexture_setRepeated(texture, parralax);
     sfSprite_setTexture(sprite, texture, 0);
-    new_back->parralax = parralax;
+    new_back->parralax = new_parralax;
     new_back->path = path;
     new_back->rect = new_rect;
     new_back->sprite = sprite;
     new_back->texture = texture;
-    new_back->speed = 0;
+    new_back->speed = speed;
     init_background_pos(new_back);
     return (new_back);
 }

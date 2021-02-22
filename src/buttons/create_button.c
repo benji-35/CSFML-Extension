@@ -10,8 +10,16 @@
 
 sfVector2f get_text_pos(button *btn);
 
-void init_button(button *btn)
+static void null_functions_buttons(button *btn)
 {
+    btn->on_click = NULL;
+    btn->on_over = NULL;
+    btn->on_unover = NULL;
+}
+
+static void init_button(button *btn)
+{
+    int *interractable = malloc(sizeof(int));
     sfColor *normal = malloc(sizeof(sfColor));
     sfColor *over = malloc(sizeof(sfColor));
     sfColor *click = malloc(sizeof(sfColor));
@@ -20,15 +28,17 @@ void init_button(button *btn)
     *normal = sfWhite;
     *over = sfColor_fromRGBA(142, 142, 142, 255);
     *click = sfColor_fromRGBA(94, 94, 94, 255);
+    *interractable = 1;
     pos_text->x = 0.0f;
     pos_text->y = 0.0f;
     btn->pos_text = pos_text;
     btn->click_color = click;
     btn->normal_color = normal;
     btn->over_color = over;
-    btn->interractable = 1;
+    btn->interractable = interractable;
     sfText_setPosition(text, get_text_pos(btn));
     sfText_setString(text, "NEW TEXT");
+    null_functions_buttons(btn);
 }
 
 button *create_button(float x, float y, char *path_img, sfIntRect rect)
@@ -42,8 +52,10 @@ button *create_button(float x, float y, char *path_img, sfIntRect rect)
     sfSprite *sprite = sfSprite_create();
     sfSprite_setTextureRect(sprite, rect);
     sfSprite_setTexture(sprite, texutre, sfFalse);
+    int *is_over = malloc(sizeof(int));
+    *is_over = 0;
     *new_rect = rect;
-    new_button->is_over = 0;
+    new_button->is_over = is_over;
     new_button->texture = texutre;
     new_button->pos_button = pos;
     new_button->size_button = size;

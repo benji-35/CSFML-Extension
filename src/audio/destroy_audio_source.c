@@ -10,9 +10,8 @@
 
 void destroy_audio_clip(audio_clip *clip)
 {
-    if (clip == NULL)
-        return;
     sfSoundBuffer_destroy(clip->buffer);
+    free(clip->volume);
     free(clip);
 }
 
@@ -20,6 +19,10 @@ void destroy_audio_source(audio_source *source)
 {
     if (source == NULL)
         return;
+    free(source->loop);
+    free(source->max_time);
+    free(source->time);
     sfSound_destroy(source->sound);
+    free(source->volume);
     free(source);
 }

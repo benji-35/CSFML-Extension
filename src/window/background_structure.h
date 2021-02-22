@@ -16,8 +16,8 @@ typedef struct background {
     sfTexture *texture;
     sfSprite *sprite;
     sfVector2f *pos;
-    int parralax;
-    float speed;
+    int *parralax;
+    float *speed;
 } background;
 
 #endif /* !BACKGROUND_STRUCTURE_H_ */

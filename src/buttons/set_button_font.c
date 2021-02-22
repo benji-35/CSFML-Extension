@@ -25,7 +25,7 @@ void set_button_interractable(button *btn, int interractable)
 {
     if (btn == NULL)
         return;
-    btn->interractable = interractable;
+    *btn->interractable = interractable;
     if (interractable) {
         sfSprite_setColor(btn->sprite, *btn->normal_color);
     } else {

@@ -20,12 +20,12 @@ typedef struct vector4f {
 
 typedef struct animation_s {
     sfIntRect *rect;
-    float time_anim;
-    int idle;
-    int jump;
-    int attack;
-    int walk;
-    int run;
+    float *time_anim;
+    int *idle;
+    int *jump;
+    int *attack;
+    int *walk;
+    int *run;
     sfVector3f *current;
 } animation;
 
@@ -36,9 +36,9 @@ typedef struct game_object_s {
     sfVector2f *velocity;
     vector4f *corners;
     animation *anims;
-    int gravity;
-    int collidable;
-    int is_jumping;
+    int *gravity;
+    int *collidable;
+    int *is_jumping;
     int displayable;
     void (*on_collision)(list *l, struct game_object_s *obj);
 } game_object;

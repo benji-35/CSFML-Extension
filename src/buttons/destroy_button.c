@@ -12,6 +12,7 @@ void destroy_button(button *btn)
 {
     if (btn == NULL)
         return;
+    free(btn->is_over);
     free(btn->pos_button);
     free(btn->pos_text);
     free(btn->rect);
@@ -22,5 +23,6 @@ void destroy_button(button *btn)
     sfSprite_destroy(btn->sprite);
     sfTexture_destroy(btn->texture);
     sfText_destroy(btn->text);
+    free(btn->interractable);
     free(btn);
 }

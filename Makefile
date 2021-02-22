@@ -7,12 +7,14 @@
 
 NAME = test
 
-SRC = main.c
+SRC = main.c	\
+	my_window_drawing.c	\
+	button_interract.c
 
 INCLUDES = -I includes
 
-LIBS = -L libs -lmy_audio -lmy_button -lmy_gameobject	\
-	-lmy_list -lmy -lmyprintf -lmy_physics -lmy_window
+LIBS = -l csfml-graphics -l csfml-audio -l csfml-system \
+	-L libs/ -lmy_list -lmy_window -lmy_button -lmy_audio -lmy -lmy_gameobject -lmy_physics -lmyprint
 
 EXTRA = -g -W -Werror
 

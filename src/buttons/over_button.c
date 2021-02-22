@@ -15,23 +15,29 @@ void change_colors_btn(button *btn, sfColor *color)
     sfText_setColor(btn->text, *color);
 }
 
-static void over_on(button *btn, list *l)
+static void over_button_active(button *btn, list *l)
 {
-    (btn->on_over)(btn, l);
-    btn->is_over = 1;
-    sfSprite_setColor(btn->sprite, *btn->over_color);
+    if (*btn->is_over == 0) {
+        *btn->is_over = 1;
+        sfSprite_setColor(btn->sprite, *btn->over_color);
+        if (btn->on_over != NULL)
+            (btn->on_over)(btn, l);
+    }
 }
 
-static void over_off(button *btn, list *l)
+static void unove_button_active(button *btn, list *l)
 {
-    btn->is_over = 0;
-    sfSprite_setColor(btn->sprite, *btn->normal_color);
-    (btn->on_unover)(btn, l);
+    if (*btn->is_over) {
+        *btn->is_over = 0;
+        sfSprite_setColor(btn->sprite, *btn->normal_color);
+        if (btn->on_unover != NULL)
+            (btn->on_unover)(btn, l);
+    }
 }
 
 void over_button(button *btn, sfVector2f *pos_mouse, list *l)
 {
-    if (btn == NULL || btn->interractable == 0)
+    if (btn == NULL || *btn->interractable == 0)
         return;
     sfVector2i *cur_sw = (sfVector2i *) find_data_extrem(l, "curr sw", VECTOR);
     sfVector2i *sw = (sfVector2i *)find_data_extrem(l, "sw", VECTOR);
@@ -43,9 +49,9 @@ void over_button(button *btn, sfVector2f *pos_mouse, list *l)
     float end_y = y_pos + (btn->size_button->y * btn->rect->height) * add_y;
     if (pos_mouse->x <= end_x && pos_mouse->x >= x_pos) {
         if (pos_mouse->y <= end_y && pos_mouse->y >= y_pos) {
-            over_on(btn, l);
+            over_button_active(btn, l);
             return;
         }
     }
-    over_off(btn, l);
+    unove_button_active(btn, l);
 }

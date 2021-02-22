@@ -14,17 +14,18 @@ typedef struct audio_clip
 {
     char *path_audio;
     sfSoundBuffer *buffer;
-    float volume;
+    float *volume;
 
 } audio_clip;
+
 
 typedef struct audio_source_s {
     audio_clip *clip;
     sfSound *sound;
-    float volume;
-    float time;
-    float max_time;
-    int loop;
+    float *volume;
+    float *time;
+    float *max_time;
+    int *loop;
 } audio_source;
 
 #endif /* !MY_AUDIO_STRUCTURE_H_ */

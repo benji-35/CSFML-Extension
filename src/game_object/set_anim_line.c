@@ -10,19 +10,19 @@
 void set_anim_line(animation *anim, int id_line, int line, int nb_anims)
 {
     if (id_line == 0) {
-        anim->idle = line;
+        *anim->idle = line;
     }
     if (id_line == 1) {
-        anim->jump = line;
+        *anim->jump = line;
     }
     if (id_line == 2) {
-        anim->walk = line;
+        *anim->walk = line;
     }
     if (id_line == 3) {
-        anim->run = line;
+        *anim->run = line;
     }
     if (id_line == 4) {
-        anim->attack = line;
+        *anim->attack = line;
     }
 }
 

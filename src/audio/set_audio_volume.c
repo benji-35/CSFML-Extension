@@ -9,6 +9,6 @@
 
 void set_audio_source_volume(audio_source *source, float vol)
 {
-    source->volume = vol;
+    *source->volume = vol;
     sfSound_setVolume(source->sound, vol);
 }
